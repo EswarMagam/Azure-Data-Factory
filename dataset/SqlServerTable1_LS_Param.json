@@ -1,0 +1,13 @@
+{
+	"name": "SqlServerTable1_LS_Param",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1_Param_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

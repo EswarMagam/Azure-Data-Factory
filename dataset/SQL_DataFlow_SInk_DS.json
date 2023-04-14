@@ -1,0 +1,17 @@
+{
+	"name": "SQL_DataFlow_SInk_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_DB_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Customerdf"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

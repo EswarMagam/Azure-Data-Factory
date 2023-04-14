@@ -1,0 +1,19 @@
+{
+	"name": "SqlServer1_Param_LS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Data Source=sqladedbserver.database.windows.net;Initial Catalog=DataEngineerDB;User ID=Eswar",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1_LS",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqlserverpassword"
+			}
+		}
+	}
+}

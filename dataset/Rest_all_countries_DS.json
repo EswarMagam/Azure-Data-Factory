@@ -1,0 +1,13 @@
+{
+	"name": "Rest_all_countries_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Rest_All_Countries_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

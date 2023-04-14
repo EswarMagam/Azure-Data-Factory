@@ -1,0 +1,122 @@
+{
+	"name": "REST_API_Example",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Rest_DS",
+						"type": "DatasetReference",
+						"parameters": {
+							"RelativeURL": "India"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Generic_ADLS_CSV_Assignments_DS",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderpath": "REST Output"
+						}
+					}
+				]
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-31.eastus.logic.azure.com:443/workflows/fc06b185bd8f4845a1d6d66ec5707e15/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dD_ofhVGtYJijjhfxfVeT8Q2nDpGdWLC4R53ySuCU-k",
+					"method": "POST",
+					"body": {
+						"Pipeline Name": "REST_API_Example",
+						"Status": "Successful",
+						"RecipentsEmailID": "magameswar@gmail.com"
+					}
+				}
+			},
+			{
+				"name": "Web1_copy1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-31.eastus.logic.azure.com:443/workflows/fc06b185bd8f4845a1d6d66ec5707e15/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dD_ofhVGtYJijjhfxfVeT8Q2nDpGdWLC4R53ySuCU-k",
+					"method": "POST",
+					"body": {
+						"Pipeline Name": "REST_API_Example",
+						"Status": "Failed",
+						"RecipentsEmailID": "magameswar@gmail.com"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-04-07T09:38:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "missiondataengineer",
+	"properties": {
+		"globalParameters": {
+			"SchemaNameGlobalParam": {
+				"type": "string",
+				"value": "SalesLt"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7bf53450-95c4-45c1-b266-1fcebf4bd1b9",
+		"tenantId": "26761345-78a1-4c20-b9c4-d8e19585895a"
+	}
+}

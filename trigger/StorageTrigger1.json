@@ -1,0 +1,25 @@
+{
+	"name": "StorageTrigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Injestion_SQLDB_CUSTOMER_Jason",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/landing/blobs/Customer/",
+			"blobPathEndsWith": ".txt",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/77b978aa-9d4d-42d3-be0a-93dc2446c983/resourceGroups/Resource_Group_Azurelib_AzureDE/providers/Microsoft.Storage/storageAccounts/azuredataengineer06adls",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
