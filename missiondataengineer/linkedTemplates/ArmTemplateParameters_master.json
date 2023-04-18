@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "missiondataengineer"
+		},
+		"ADLS_LS_accountKey": {
+			"value": ""
+		},
+		"SQL_DB_LS_connectionString": {
+			"value": ""
+		},
+		"SqlServer1_Param_LS_connectionString": {
+			"value": "Integrated Security=False;Data Source=sqladedbserver.database.windows.net;Initial Catalog=DataEngineerDB;User ID=Eswar"
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"value": "https://azuredataengineer06adls.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_LS_properties_typeProperties_baseUrl": {
+			"value": "https://sqladedbserverpswd.vault.azure.net/"
+		},
+		"RestService_LS_properties_typeProperties_url": {
+			"value": "https://restcountries.com/v3.1/name/"
+		},
+		"Rest_All_Countries_LS_properties_typeProperties_url": {
+			"value": "https://restcountries.com/v3.1/all"
+		},
+		"Assin10_Q6_India_Json_File_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/77b978aa-9d4d-42d3-be0a-93dc2446c983/resourceGroups/Resource_Group_Azurelib_AzureDE/providers/Microsoft.Storage/storageAccounts/azuredataengineer06adls"
+		},
+		"StorageTrigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/77b978aa-9d4d-42d3-be0a-93dc2446c983/resourceGroups/Resource_Group_Azurelib_AzureDE/providers/Microsoft.Storage/storageAccounts/azuredataengineer06adls"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

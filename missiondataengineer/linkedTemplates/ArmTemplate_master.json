@@ -1,0 +1,186 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "missiondataengineer"
+		},
+		"ADLS_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_LS'"
+		},
+		"SQL_DB_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQL_DB_LS'"
+		},
+		"SqlServer1_Param_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer1_Param_LS'",
+			"defaultValue": "Integrated Security=False;Data Source=sqladedbserver.database.windows.net;Initial Catalog=DataEngineerDB;User ID=Eswar"
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuredataengineer06adls.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_LS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://sqladedbserverpswd.vault.azure.net/"
+		},
+		"RestService_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://restcountries.com/v3.1/name/"
+		},
+		"Rest_All_Countries_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://restcountries.com/v3.1/all"
+		},
+		"Assin10_Q6_India_Json_File_Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/77b978aa-9d4d-42d3-be0a-93dc2446c983/resourceGroups/Resource_Group_Azurelib_AzureDE/providers/Microsoft.Storage/storageAccounts/azuredataengineer06adls"
+		},
+		"StorageTrigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/77b978aa-9d4d-42d3-be0a-93dc2446c983/resourceGroups/Resource_Group_Azurelib_AzureDE/providers/Microsoft.Storage/storageAccounts/azuredataengineer06adls"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "missiondataengineer_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_LS_accountKey": {
+						"value": "[parameters('ADLS_LS_accountKey')]"
+					},
+					"SQL_DB_LS_connectionString": {
+						"value": "[parameters('SQL_DB_LS_connectionString')]"
+					},
+					"ADLS_LS_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_LS_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_LS_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_LS_properties_typeProperties_baseUrl')]"
+					},
+					"RestService_LS_properties_typeProperties_url": {
+						"value": "[parameters('RestService_LS_properties_typeProperties_url')]"
+					},
+					"Rest_All_Countries_LS_properties_typeProperties_url": {
+						"value": "[parameters('Rest_All_Countries_LS_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "missiondataengineer_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"SqlServer1_Param_LS_connectionString": {
+						"value": "[parameters('SqlServer1_Param_LS_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'missiondataengineer_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "missiondataengineer_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'missiondataengineer_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "missiondataengineer_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'missiondataengineer_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "missiondataengineer_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Assin10_Q6_India_Json_File_Trigger_properties_typeProperties_scope": {
+						"value": "[parameters('Assin10_Q6_India_Json_File_Trigger_properties_typeProperties_scope')]"
+					},
+					"StorageTrigger1_properties_typeProperties_scope": {
+						"value": "[parameters('StorageTrigger1_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'missiondataengineer_ArmTemplate_3')]"
+			]
+		}
+	]
+}
