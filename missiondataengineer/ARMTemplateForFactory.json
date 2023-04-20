@@ -360,7 +360,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Assign6_Q6_Threshold')]",
+			"name": "[concat(parameters('factoryName'), '/Assin6_Q6_Threshold')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
