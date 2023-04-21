@@ -74,6 +74,12 @@
 				"defaultValue": "Customer"
 			}
 		},
+		"variables": {
+			"RowCount": {
+				"type": "String",
+				"defaultValue": "10"
+			}
+		},
 		"annotations": []
 	}
 }
