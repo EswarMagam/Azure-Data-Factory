@@ -16,9 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "SqlServerSink",
@@ -235,20 +241,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Generic_SQL_DS",
-						"type": "DatasetReference",
-						"parameters": {
-							"SchemaName": "saleslt",
-							"TableName": {
-								"value": "@variables('TableNamebyVariable')",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "Assin8_CSV_Q2_DS",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Product_SQL_DS",
+						"referenceName": "SQL_DB_DS",
 						"type": "DatasetReference"
 					}
 				]
