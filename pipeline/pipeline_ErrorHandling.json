@@ -44,7 +44,7 @@
 			},
 			{
 				"name": "On success",
-				"description": "This activity will run on successful completion of Copy data1 activity.",
+				"description": "This activity will run on successful completion of Copy data1 activity. Then On fail activity is skipped then On skip activity will run. Because in this case On fail activity is not getting called.",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -92,7 +92,7 @@
 			},
 			{
 				"name": "On skip",
-				"description": "'On fail' copy activity will be skipped if the Copy data1 activity fails.  If the 'Copy data1' activity fails then pipeline tries to run 'On fail' activity but we have selected on skip, before running the activity it will get skiiped and the next 'On skip' activity will get executed.  ",
+				"description": "This activtiy get called when the On fail activity is not getting called after the Copy data1. This happens when Copy data1 runs successfully then On fail activity will be skipped and On success activity get called and then On skip activtiy called after On sucsess.\n",
 				"type": "Copy",
 				"dependsOn": [
 					{
