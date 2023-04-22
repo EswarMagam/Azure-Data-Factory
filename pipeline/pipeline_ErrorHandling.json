@@ -92,7 +92,7 @@
 			},
 			{
 				"name": "On skip",
-				"description": "On fail copy activity will be skipped if the Copy data1 activity fails. ",
+				"description": "'On fail' copy activity will be skipped if the Copy data1 activity fails.  If the 'Copy data1' activity fails then pipeline tries to run 'On fail' activity but we have selected on skip, before running the activity it will get skiiped and the next 'On skip' activity will get executed.  ",
 				"type": "Copy",
 				"dependsOn": [
 					{
