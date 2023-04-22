@@ -31,7 +31,15 @@
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false,
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "ADLS_LS",
+							"type": "LinkedServiceReference"
+						},
+						"path": "landing/Logging/Staging",
+						"enableCompression": true
+					},
 					"enableSkipIncompatibleRow": true,
 					"logSettings": {
 						"enableCopyActivityLog": true,
