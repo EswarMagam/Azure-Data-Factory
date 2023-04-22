@@ -19,7 +19,8 @@
 				}
 			},
 			{
-				"name": "Copy data2",
+				"name": "On fail",
+				"description": "This activity will run on failure of Copy data1 activity.",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -42,7 +43,8 @@
 				}
 			},
 			{
-				"name": "Copy data3",
+				"name": "On success",
+				"description": "This activity will run on successful completion of Copy data1 activity.",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -65,13 +67,38 @@
 				}
 			},
 			{
-				"name": "Copy data4",
+				"name": "On completion",
+				"description": "This activity will run on success/Failure of Copy data1 activity. It does not care success or failure, if the copy data1 completes then automatically copydata4 will run.",
 				"type": "Copy",
 				"dependsOn": [
 					{
 						"activity": "Copy data1",
 						"dependencyConditions": [
 							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			},
+			{
+				"name": "On skip",
+				"description": "On fail copy activity will be skipped if the Copy data1 activity fails. ",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "On fail",
+						"dependencyConditions": [
+							"Skipped"
 						]
 					}
 				],
