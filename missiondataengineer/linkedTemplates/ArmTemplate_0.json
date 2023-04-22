@@ -518,6 +518,79 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/FaultTolerance_Json_DS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ADLS_LS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "saleslt.Customer.json",
+						"fileSystem": "landing"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"CustomerID": {
+							"type": "integer"
+						},
+						"NameStyle": {
+							"type": "boolean"
+						},
+						"Title": {
+							"type": "string"
+						},
+						"FirstName": {
+							"type": "string"
+						},
+						"MiddleName": {
+							"type": "string"
+						},
+						"LastName": {
+							"type": "string"
+						},
+						"Suffix": {
+							"type": "string"
+						},
+						"CompanyName": {
+							"type": "string"
+						},
+						"SalesPerson": {
+							"type": "string"
+						},
+						"EmailAddress": {
+							"type": "string"
+						},
+						"Phone": {
+							"type": "string"
+						},
+						"PasswordHash": {
+							"type": "string"
+						},
+						"PasswordSalt": {
+							"type": "string"
+						},
+						"rowguid": {
+							"type": "string"
+						},
+						"ModifiedDate": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ADLS_LS')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Generic_ADLS_CSV_Assignments_DS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -669,38 +742,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ADLS_LS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/HW_SQL_DS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "SQL_DB_LS",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "SqlServerTable",
-				"schema": [
-					{
-						"name": "tablename",
-						"type": "varchar"
-					},
-					{
-						"name": "hw_date",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "HighWaterMark_Table"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SQL_DB_LS')]"
 			]
 		}
 	]
