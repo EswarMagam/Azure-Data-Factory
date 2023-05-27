@@ -1,0 +1,34 @@
+{
+	"name": "BlobStorage_to_snowflake_Employee_CSV_source_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Snowflake_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Employee.csv",
+				"container": "landing"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\r",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
