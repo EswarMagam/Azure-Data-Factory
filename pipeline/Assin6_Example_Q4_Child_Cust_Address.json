@@ -57,7 +57,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"folderpath": {
-								"value": "@{formatDateTime(utcNow(),'yyyy')}\\@{formatDateTime(utcNow(),'MM')}\\@{formatDateTime(utcNow(),'dd')}",
+								"value": "CustomerAddress\\@{formatDateTime(utcNow(),'yyyy')}\\@{formatDateTime(utcNow(),'MM')}\\@{formatDateTime(utcNow(),'dd')}",
 								"type": "Expression"
 							}
 						}
