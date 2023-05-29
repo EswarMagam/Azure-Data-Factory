@@ -53,7 +53,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"folderpath": {
-								"value": "@{formatDateTime(utcNow(),'yyyy')}\\@{formatDateTime(utcNow(),'MM')}\\@{formatDateTime(utcNow(),'dd')}",
+								"value": "Product\\@{formatDateTime(utcNow(),'yyyy')}\\@{formatDateTime(utcNow(),'MM')}\\@{formatDateTime(utcNow(),'dd')}",
 								"type": "Expression"
 							}
 						}
