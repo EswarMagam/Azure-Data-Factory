@@ -52,7 +52,7 @@
 						"referenceName": "Generic_ADLS_CSV_DS",
 						"type": "DatasetReference",
 						"parameters": {
-							"folderpath": "Customer"
+							"folderpath": "CustomerA6Q1"
 						}
 					}
 				]
@@ -118,7 +118,7 @@
 						"referenceName": "Generic_ADLS_CSV_DS",
 						"type": "DatasetReference",
 						"parameters": {
-							"folderpath": "CustomerAddress"
+							"folderpath": "CustomerAddressA6Q1"
 						}
 					}
 				]
